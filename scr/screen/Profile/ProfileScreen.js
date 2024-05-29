@@ -18,6 +18,7 @@ export const ProfileScreen = () => {
     getUserInfo()
       .then(res => {
         setUserInfoData(res[0])
+        console.log(res)
       });
     getFavouriteUserTracks()
       .then(res => setCountFavourite(res.length));

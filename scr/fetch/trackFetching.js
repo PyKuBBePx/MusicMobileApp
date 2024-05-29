@@ -44,6 +44,7 @@ export const getTracks = async (track1) => {
 }
 
 export const getFavouriteTracks = async (favData = []) => {
+
   return new Promise((resolve, reject) => {
     refTrack.onSnapshot(querySnapshot => {
       const list = [];
@@ -55,14 +56,19 @@ export const getFavouriteTracks = async (favData = []) => {
           text,
           genre
         } = doc.data();
-        list.push({
-          id: doc.id,
-          author,
-          name,
-          image,
-          text,
-          genre
-        });
+
+        favData.map(el => {
+          if (el.track_name === name) {
+            list.push({
+              id: doc.id,
+              author,
+              name,
+              image,
+              text,
+              genre
+            });
+          }
+        })
       });
       resolve(list);
     }, (error) => {

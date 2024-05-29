@@ -44,55 +44,6 @@ export const FavouriteScreen = () => {
       >
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            gap: 15,
-          }}
-        >
-          <Pressable
-            style={{
-              width: 250,
-              borderRadius: 10,
-              borderWidth: 1,
-              borderColor: '#fff',
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              paddingLeft: 11,
-              paddingVertical: 5
-            }}
-          >
-            <TextInput
-              placeholder="Найти песню"
-              placeholderTextColor="#FFF"
-              style={{
-                fontSize: 12,
-                fontFamily: 'Montserrat-Regular',
-                color: '#FFF'
-              }}
-              onChangeText={() => {
-                setVisibility(true)
-              }}
-            />
-          </Pressable>
-          {
-            visibility &&
-            <Pressable
-
-            >
-              <Text
-                style={{
-                  fontSize: 14,
-                  fontFamily: 'Montserrat-Medium',
-                  color: '#FFF'
-                }}
-              >
-                Отменить
-              </Text>
-            </Pressable>
-          }
-        </View>
-        <View
-          style={{
             gap: 40
           }}
         >

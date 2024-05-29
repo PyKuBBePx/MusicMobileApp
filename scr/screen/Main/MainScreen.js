@@ -19,7 +19,6 @@ export const MainScreen = () => {
   React.useEffect(() => {
     const recentlyTracks = async () => {
       const list = [];
-      setRecentlyTracks(list)
       const recent1 = await AsyncStorage.getItem('rec1')
       const recent2 = await AsyncStorage.getItem('rec2')
       const recent3 = await AsyncStorage.getItem('rec3')
@@ -31,11 +30,15 @@ export const MainScreen = () => {
             if (recent2) {
               getTracks(recent2)
                 .then((res) => {
-                  list.push(...res)
+                  if(recent2 !== recent1){
+                    list.push(...res)
+                  }
                   if (recent3) {
                     getTracks(recent3)
                       .then((res) => {
-                        list.push(...res)
+                        if (recent3 !== recent1 || recent3 !== recent2 ) {
+                          list.push(...res)
+                        }
                         setRecentlyTracks(list)
                       })
                   }
@@ -46,8 +49,9 @@ export const MainScreen = () => {
     }
 
     const genreTracks = async () => {
-      const favGenre = await AsyncStorage.getItem('favGenre') ?? 'панк'
       setFavouriteTracks([])
+      setRecentlyTracks([])
+      const favGenre = await AsyncStorage.getItem('favGenre') ?? 'панк'
 
       getFavGenreTracks(favGenre)
         .then((res) => {
