@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "745087425706",
+    "firebase_url": "https://musicsearchapp-68c44-default-rtdb.firebaseio.com",
+    "project_id": "musicsearchapp-68c44",
+    "storage_bucket": "musicsearchapp-68c44.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745087425706:android:2bdedec8583066284e84d3",
+        "android_client_info": {
+          "package_name": "com.MusicCompany2Pet.MusicApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPBvbYxZezrX_A6wAxnbELK6I6KN38VbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

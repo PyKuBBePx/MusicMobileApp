@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Music",
+    "slug": "Music",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "googleServicesFile": "./google-services.json",
+      "package": "com.MusicCompany2Pet.MusicApp"
+    },
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      [
+        "expo-font",
+        {
+          "fonts": ["assets/fonts"]
+        }
+      ]
+    ]
+  }
+}
