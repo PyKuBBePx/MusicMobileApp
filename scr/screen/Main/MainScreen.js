@@ -23,29 +23,27 @@ export const MainScreen = () => {
       const recent2 = await AsyncStorage.getItem('rec2')
       const recent3 = await AsyncStorage.getItem('rec3')
 
+      console.log(recent1, recent2, recent3)
+
       if (recent1) {
-        getTracks(recent1)
+        await getTracks(recent1)
           .then((res) => {
             list.push(...res)
-            if (recent2) {
-              getTracks(recent2)
-                .then((res) => {
-                  if(recent2 !== recent1){
-                    list.push(...res)
-                  }
-                  if (recent3) {
-                    getTracks(recent3)
-                      .then((res) => {
-                        if (recent3 !== recent1 || recent3 !== recent2 ) {
-                          list.push(...res)
-                        }
-                        setRecentlyTracks(list)
-                      })
-                  }
-                })
-            }
           })
       }
+      if (recent2 && recent2 !== recent1) {
+        await getTracks(recent2)
+          .then((res) => {
+              list.push(...res)
+            })
+      }
+      if (recent3 && recent3 !== recent1 || recent3 !== recent2) {
+        await getTracks(recent3)
+          .then((res) => {
+              list.push(...res)
+          })
+      }
+      setRecentlyTracks(list)
     }
 
     const genreTracks = async () => {
@@ -157,7 +155,7 @@ export const MainScreen = () => {
           renderItem={(el => {
             return <TrackComponent data={el.item} navigation={navigation} />
           })}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.index}
         />
       </View>
       <View
@@ -189,7 +187,7 @@ export const MainScreen = () => {
           renderItem={(el => {
             return <TrackComponent data={el.item} navigation={navigation} />
           })}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.index}
         />
       </View>
     </LinearGradient>

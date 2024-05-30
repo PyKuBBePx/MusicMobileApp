@@ -11,7 +11,6 @@ import {getFavouriteTracks} from "../../fetch/trackFetching";
 export const FavouriteScreen = () => {
   const navigation = useNavigation()
 
-  const [visibility, setVisibility] = React.useState(false)
   const [dataFavourite, setDataFavourite] = React.useState([])
   const [count, setCount] = React.useState(null)
 
@@ -59,7 +58,7 @@ export const FavouriteScreen = () => {
             renderItem={(el => {
               return <TrackComponent data={el.item} navigation={navigation} />
             })}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.index}
           />
         </View>
       </View>

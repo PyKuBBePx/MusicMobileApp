@@ -18,7 +18,7 @@ export const InitScreen = () => {
       if (uid) {
         navigation.navigate('MainStack')
       } else if (initScreen) {
-        navigation.navigate('AuthRegScreen')
+        navigation.navigate('AuthRegScreen', {type: 'auth'})
       }
 
       setSplashScreen(false);

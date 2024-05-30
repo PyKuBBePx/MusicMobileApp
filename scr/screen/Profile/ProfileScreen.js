@@ -30,6 +30,9 @@ export const ProfileScreen = () => {
 
   const exitApp = async () => {
     await AsyncStorage.removeItem('uid')
+    await AsyncStorage.removeItem('rec1')
+    await AsyncStorage.removeItem('rec2')
+    await AsyncStorage.removeItem('rec3')
     navigation.navigate('AuthRegScreen', {type: 'auth'})
   }
 

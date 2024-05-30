@@ -32,6 +32,7 @@ export const CustomModal = ({ modalVisible, modalText, modalTitle, setModalVisib
               fontFamily: 'Montserrat-Regular',
               marginTop: 20,
               fontSize: 18,
+              textAlign: 'center'
             }}
           >{modalTitle}</Text>
           <Text
@@ -39,6 +40,7 @@ export const CustomModal = ({ modalVisible, modalText, modalTitle, setModalVisib
               fontFamily: 'Montserrat-Regular',
               marginTop: 10,
               fontSize: 16,
+              textAlign: 'center'
             }}
           >{modalText}</Text>
           <Pressable

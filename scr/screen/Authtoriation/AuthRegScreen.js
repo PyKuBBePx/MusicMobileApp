@@ -6,7 +6,7 @@ import {useState} from "react";
 import auth from '@react-native-firebase/auth';
 import {CustomModal} from "../../components/Modal/Modal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {addFavouriteTracks} from "../../fetch/authFetch";
+import {addUser} from "../../fetch/authFetch";
 
 export const AuthRegScreen = () => {
   const navigation = useNavigation();
@@ -34,6 +34,17 @@ export const AuthRegScreen = () => {
   }
 
   const authorizationUser = () => {
+    if (email.trim() === '' || password.trim() === '') {
+      clearState()
+      const titleError = 'Error!'
+      let textError = 'Проверьте правильность введенных данных. \nВсе поля должны быть заполненны!'
+
+      setModalTitle(titleError)
+      setModalText(textError)
+      setModalVisible(true)
+      return true
+    }
+
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(async (res) => {
@@ -61,9 +72,21 @@ export const AuthRegScreen = () => {
   const clearState = () => {
     setEmail('')
     setPassword('')
+    setLogin('')
   }
 
   const registrationUser = () => {
+    if (email.trim() === '' || password.trim() === '' || login.trim() === '') {
+      clearState()
+      const titleError = 'Error!'
+      let textError = 'Проверьте правильность введенных данных. \nВсе поля должны быть заполненны!'
+
+      setModalTitle(titleError)
+      setModalText(textError)
+      setModalVisible(true)
+      return true
+    }
+
     auth()
       .createUserWithEmailAndPassword(email, password)
       .then(async (res) => {
@@ -72,7 +95,7 @@ export const AuthRegScreen = () => {
         let textError = 'Вы успешно зарегистрировались!'
 
         const uid = res.user.uid
-        addFavouriteTracks(email, login, uid)
+        addUser(email, login, uid)
         await AsyncStorage.setItem('uid', uid, async () => {
           setModalTitle(titleError)
           setModalText(textError)
@@ -238,7 +261,10 @@ export const AuthRegScreen = () => {
             }
           </Text>
           <Pressable
-            onPress={() => setTypeScreen( typeScreen === 'auth' ? 'reg' : 'auth')}
+            onPress={() => {
+              clearState()
+              setTypeScreen(typeScreen === 'auth' ? 'reg' : 'auth')
+            }}
           >
             <Text
               style={{

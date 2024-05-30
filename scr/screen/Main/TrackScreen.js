@@ -22,8 +22,8 @@ export const TrackScreen = () => {
       const recent1 = await AsyncStorage.getItem('rec1')
       const recent2 = await AsyncStorage.getItem('rec2')
 
-      await AsyncStorage.setItem('rec3', recent2)
-      await AsyncStorage.setItem('rec2', recent1)
+      if (recent2 && recent2 !== recent1) await AsyncStorage.setItem('rec3', recent2)
+      if (recent1 && recent1 !== data.name) await AsyncStorage.setItem('rec2', recent1)
       await AsyncStorage.setItem('rec1', data.name)
     }
 
